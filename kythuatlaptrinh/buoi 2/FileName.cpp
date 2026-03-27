@@ -5,10 +5,26 @@ using namespace std;
 struct person {
 	int id;
 	string name;
+	friend ostream& operator <<(ostream& os, const person& p) {
+		os << "\t+ Id: " << p.id << endl;
+		os << "\t+ name: " << p.name.endl;
+		return os;
+	}
+	friend istream& operator >>(istream& in, person& p){
+		cout << "Input person information" << endl;
+		cout << "\t+ Id: ";
+		in.ignore();
+		getline(cin, id);
+		cout << "\t+ Name: ";
+		in.ignore();
+
+
+	}
 };
 struct node {
     person data;
 	node* next;
+	node(person x) : data9x), next(nullptr) {}
 };
 struct Linkedlist {
 	node* head;
@@ -24,7 +40,12 @@ struct Linkedlist {
 			item = item->next;
 		}
 	}
+	void Add(person x) {
+		node* newnode = new node(x);
+		newnode->next = head;
+		head = newnode;
 
+	}
 };
 int main()
 {
@@ -52,7 +73,11 @@ do {
 		break;
 	}
 	case 2: {
-		
+		person a;
+		cin >> a;
+		list.Add(a);
+		cout << "add a person successfully" << endl;
+
 		break;
 	}
 	case 3: {
