@@ -43,7 +43,7 @@ void viewpersonlist(vector<person> p) {
 	else {
 		for (int i = 0; i < p.size(); i++) {
 			cout << "person " << (i + 1) << endl;
-			cout << "\t + id: " << p[i].id << endl;
+			cout << "\t+ id: " << p[i].id << endl;
 			cout << "\t+ name: " << p[i].name << endl;
 			cout << "\t+ age: " << p[i].age << endl;
 			cout << "\t+ address: " << p[i].address << endl; 
@@ -57,7 +57,7 @@ int main() {
 		system("cls");
 		cout << "--- HUMAN RESOURCE -------------" << endl;
 		cout << "1. view person list" << endl;
-		cout << "2. add a perso" << endl;
+		cout << "2. add a person" << endl;
 		cout << "3. remove a person" << endl;
 		cout << "4. find a person by name" << endl;
 		cout << "5. export to file" << endl;
