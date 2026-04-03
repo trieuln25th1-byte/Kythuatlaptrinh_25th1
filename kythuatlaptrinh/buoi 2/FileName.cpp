@@ -7,24 +7,25 @@ struct person {
 	string name;
 	friend ostream& operator <<(ostream& os, const person& p) {
 		os << "\t+ Id: " << p.id << endl;
-		os << "\t+ name: " << p.name.endl;
+		os << "\t+ name: " << p.name << endl;
 		return os;
 	}
-	friend istream& operator >>(istream& in, person& p){
+	friend istream& operator >>(istream& in, person& p) {
 		cout << "Input person information" << endl;
 		cout << "\t+ Id: ";
 		in.ignore();
-		getline(cin, id);
+
 		cout << "\t+ Name: ";
+		getline(cin, p.name);
 		in.ignore();
 
-
+		return in;
 	}
 };
 struct node {
     person data;
 	node* next;
-	node(person x) : data9x), next(nullptr) {}
+	node(person x) : data(x), next(nullptr) {}
 };
 struct Linkedlist {
 	node* head;
