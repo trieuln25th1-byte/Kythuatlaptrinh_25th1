@@ -64,6 +64,38 @@ struct Linkedlist {
 		p->next = head;
 		head = p;
 	}
+	bool Remove(int removeId) {
+		if (head == NULL) {
+			cout << "no book available " << endl;
+			return true;
+		}
+		Node* item = head; {
+			if (item->data.id == removeId) {
+				Node* temp = item->next;
+				item->next = item->next->next;
+				delete temp;
+				return true;
+			}
+			item = item->next;
+		}
+		return false;
+	}
+	bool Update(int updateId) {
+		if (head == NULL) {
+			cout << "no book available" << endl;
+			return false;
+		}
+		Node* item = head;
+		while (item != NULL) {
+			if (item->data.id == updateId)
+				cin >> item->data;
+			return true;
+		}
+		item = item->next;
+	}
+	return false;
+}
+
 };
 int main() {
 	Linkedlist books = { NULL };
@@ -100,12 +132,29 @@ int main() {
 			break;
 		}
 		case 3: {
-
+			int removeId;
+			cout << "nhap id sach can xoa: " << endl;
+			cin >> removeId;
+			bool res = books.Remove(removeId);
+			if (res)
+				cout << "remove book successfully" << endl;
+			else
+				cout << "invalid book id" << endl;
+		
 
 
 			break;
 		}
 		case 4: {
+			int updateId;
+			cout << "enter book id to update: ";
+			cin >> updateId;
+			bool res
+			if (res)
+				cout << "remove book successfully" << endl;
+			else
+				cout << "invalid book id" << endl;
+
 			break;
 		}
 		case 5: {
