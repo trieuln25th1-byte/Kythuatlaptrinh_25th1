@@ -87,7 +87,7 @@ struct Linkedlist {
 		}
 		Node* item = head;
 		while (item != NULL) {
-			if (item->data.id == updateId)
+			if (item->data.id == updateId){
 				cin >> item->data;
 			return true;
 		}
@@ -140,7 +140,7 @@ int main() {
 				cout << "remove book successfully" << endl;
 			else
 				cout << "invalid book id" << endl;
-		
+
 
 
 			break;
@@ -149,7 +149,7 @@ int main() {
 			int updateId;
 			cout << "enter book id to update: ";
 			cin >> updateId;
-			bool res
+			bool res = books.Update(updateId);
 			if (res)
 				cout << "remove book successfully" << endl;
 			else
@@ -172,7 +172,7 @@ int main() {
 		}
 		default:
 			cout << "invalid choice. Try again..." << endl;
-
+		}
 			system("pause");
 			cout << "Press any key to continue...";
 		} while (true);
