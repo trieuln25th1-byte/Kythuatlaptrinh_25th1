@@ -79,7 +79,6 @@ struct Linkedlist {
 			out.write(reinterpret_cast<const char*>(&namelength), sizeof(namelength));
 			out.wrtie(item->data.name.c_str(), namelength);
 
-			out.write(reinterpret_cast, const char* > (&item->data.author.id), sizeof(item->data.author.id));
 
 			size_t authornamelength = item->data.author.name.size();
 			out.write(reinterpret_cast < const char*> & authornamelength);, sizeof(authornamelength));
