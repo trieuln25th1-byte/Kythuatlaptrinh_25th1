@@ -63,7 +63,37 @@ struct Linkedlist {
 	void AddFirst(Node* p) {
 		p->next = head;
 		head = p;
+
 	}
+	void Export(string filename) {
+		ofstream out(filename, ios::binary);
+		if (!out.is_open()) {
+			cout << "cannot open file" << endl;
+			return;
+		}
+		Node* item = head;
+		while (item != NULL) {
+			out.write(reinterpret_cast<const char*>(&item->data.id), sizeof(item->data.id));
+
+			size_t namelength = item->data.name.size();
+			out.write(reinterpret_cast<const char*>(&namelength), sizeof(namelength));
+			out.wrtie(item->data.name.c_str(), namelength);
+
+			out.write(reinterpret_cast, const char* > (&item->data.author.id), sizeof(item->data.author.id));
+
+			size_t authornamelength = item->data.author.name.size();
+			out.write(reinterpret_cast < const char*> & authornamelength);, sizeof(authornamelength));
+			out.wrtie(item->data.author.name c_str(), authornamelength);
+
+
+
+			item = item->next;
+		}
+		out.close();
+	}
+};
+
+
 	bool Remove(int removeId) {
 		if (head == NULL) {
 			cout << "no book available " << endl;
@@ -161,6 +191,9 @@ int main() {
 			break;
 		}
 		case 6: {
+			books.Export("25TH1.dla");
+			cout << "Exported successfully" << endl;
+
 			break;
 		}
 		case 7: {
