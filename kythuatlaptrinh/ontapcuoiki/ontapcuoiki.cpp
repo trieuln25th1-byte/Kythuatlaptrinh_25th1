@@ -1,107 +1,4 @@
-//#include <iostream>
-//using namespace std;
-//
-//struct Book {
-//	int id;
-//	double price;
-//	char name[50];
-//	friend istream& operator>>(istream& in, Book& b) {
-//		cout << "book information: " << endl;
-//		cout << "\t+ Id: ";
-//		in >> b.id;
-//		cout << "\t+ Name: ";
-//		in.ignore();
-//		in.getline(b.name, 50);
-//		cout << "\t+ Price: ";
-//		in >> b.price;
-//		return in;
-//	}
-//	friend ostream& operator<<(ostream& out, Book& b) {
-//		out << "\t+ Id: " << b.id << endl;
-//		out << "\t+ Name: " << b.name << endl;
-//		out << "\t+ Price: " << b.price << endl;
-//		return out;
-//
-//	}
-//
-//};
-//#define MAX 100
-//
-//int nBook = 0;
-//Book books[MAX];
-//void Addbook(Book b) {
-//	if (nBook >= MAX){
-//		cout << "no storage available " << endl;
-//		return;
-//}
-//books[nBook++] = b;
-//}
-//void Show() {
-//	for (int i = 0; i < nBook; i++) {
-//		cout << "Book [" << (i + 1) << "]: " << endl;
-//		cout << book[i];
-//	}
-//}
-//int main() 
-//{
-//
-//	do {
-//
-//		system("cls");
-//		cout << "--------- BOOK MANAGEMENT ---------" << endl;
-//		cout << "1. Add a book " << endl;
-//		cout << "2. Show book" << endl;
-//		cout << "3. Sort book" << endl;
-//		cout << "4. Find a book" << endl;
-//		cout << "0. Exit" << endl;
-//		cout << "-----------------------------------" << endl;
-//		cout << "Choose: ";
-//		int choose;
-//		cin >> choose;
-//		switch (choose) {
-//		case 1: {
-//			Book(b);
-//			cin >> b;
-//			Addbook(b);
-//			break;
-//		}
-//		case 2: {
-//			Show();
-//
-//			break;
-//		}
-//		case 3: {
-//			Sort();
-//			sorted = true;
-//
-//			break;
-//		}
-//		case 4: {
-//			if (!sorted)
-//			{
-//				cout << "Books aren't sorted " << endl;
-//			}
-//			else {
-//				int bookId;
-//				cout << "Book id to find: ";
-//				Find(bookId);
-//			}
-//				
-//			break;
-//		}
-//		case 0: {
-//			return;
-//		}
-//		default: {
-//			cout << "invalid command" << endl;
-//			break;
-//		}
-//		}
-//		system("pause");
-//		cout << "Press enter to continue" << endl;
-//	} while (true);
-//}
-
+﻿
 //
 //#include <iostream> 
 //#include <string>
@@ -169,29 +66,29 @@
 //	
 //}
 #include <iostream>
-#include <string.h> // Th? vi?n ?? d�ng h�m strcmp so s�nh chu?i k� t?
+#include <string.h> // Thư viện để dùng hàm strcmp so sánh chuỗi ký tự
 using namespace std;
 
-// C?u tr�c d? li?u cho m?t cu?n s�ch
+// Cấu trúc dữ liệu cho một cuốn sách
 struct Book {
 	int id;
 	double price;
 	char name[50];
 
-	// N?p ch?ng to�n t? nh?p >>
+	// Nạp chồng toán tử nhập >>
 	friend istream& operator>>(istream& in, Book& b) {
 		cout << "Book information: " << endl;
 		cout << "\t+ Id: ";
 		in >> b.id;
 		cout << "\t+ Name: ";
-		in.ignore(); // X�a b? nh? ??m
+		in.ignore(); // Xóa bộ nhớ đệm
 		in.getline(b.name, 50);
 		cout << "\t+ Price: ";
 		in >> b.price;
 		return in;
 	}
 
-	// N?p ch?ng to�n t? xu?t <<
+	// Nạp chồng toán tử xuất <<
 	friend ostream& operator<<(ostream& out, const Book& b) {
 		out << "\t+ Id: " << b.id << endl;
 		out << "\t+ Name: " << b.name << endl;
@@ -200,17 +97,17 @@ struct Book {
 	}
 };
 
-// C?u tr�c m?t n�t (Node) trong danh s�ch li�n k?t ??n
+// Cấu trúc một nút (Node) trong danh sách liên kết đơn
 struct Node {
-	Book data;   // D? li?u l� m?t cu?n s�ch
-	Node* next;  // Con tr? tr? ??n n�t k? ti?p
+	Book data;   // Dữ liệu là một cuốn sách
+	Node* next;  // Con trỏ trỏ đến nút kế tiếp
 };
 
-// Qu?n l� danh s�ch li�n k?t b?ng con tr? Head (qu?n l� ph?n t? ??u ti�n)
+// Quản lý danh sách liên kết bằng con trỏ Head (quản lý phần tử đầu tiên)
 Node* head = NULL;
-bool sorted = false; // Bi?n ki?m tra xem danh s�ch ?� ???c s?p x?p ch?a
+bool sorted = false; // Biến kiểm tra xem danh sách đã được sắp xếp chưa
 
-// H�m t?o m?t Node m?i ch?a cu?n s�ch b (C?p ph�t ??ng - Ch??ng 2)
+// Hàm tạo một Node mới chứa cuốn sách b (Cấp phát động - Chương 2)
 Node* CreateNode(Book b) {
 	Node* newNode = new Node();
 	newNode->data = b;
@@ -218,7 +115,7 @@ Node* CreateNode(Book b) {
 	return newNode;
 }
 
-// H�m th�m s�ch v�o cu?i danh s�ch (Ch??ng 3)
+// Hàm thêm sách vào cuối danh sách (Chương 3)
 void Addbook(Book b) {
 	Node* newNode = CreateNode(b);
 	if (head == NULL) {
@@ -231,10 +128,10 @@ void Addbook(Book b) {
 		temp = temp->next;
 	}
 	temp->next = newNode;
-	sorted = false; // Khi th�m s�ch m?i, tr?t t? s?p x?p c? c� th? b? ph� v?
+	sorted = false; // Khi thêm sách mới, trật tự sắp xếp cũ có thể bị phá vỡ
 }
 
-// H�m hi?n th? danh s�ch to�n b? s�ch (Ch??ng 3)
+// Hàm hiển thị danh sách toàn bộ sách (Chương 3)
 void Show() {
 	if (head == NULL) {
 		cout << "The book list is empty!" << endl;
@@ -244,23 +141,23 @@ void Show() {
 	int i = 1;
 	while (temp != NULL) {
 		cout << "Book [" << i << "]: " << endl;
-		cout << temp->data; // S? d?ng n?p ch?ng to�n t? <<
+		cout << temp->data; // Sử dụng nạp chồng toán tử <<
 		temp = temp->next;
 		i++;
 	}
 }
 
-// H�m S?p x?p s�ch theo Id t?ng d?n - Thu?t to�n Exchange Sort (Ch??ng 7)
+// Hàm Sắp xếp sách theo Id tăng dần - Thuật toán Exchange Sort (Chương 7)
 void Sort() {
 	if (head == NULL || head->next == NULL) {
 		cout << "Not enough books to sort." << endl;
 		return;
 	}
-	// So s�nh t?ng c?p ph?n t? v� ho�n ??i d? li?u n?u sai th? t?
+	// So sánh từng cặp phần tử và hoán đổi dữ liệu nếu sai thứ tự
 	for (Node* i = head; i->next != NULL; i = i->next) {
 		for (Node* j = i->next; j != NULL; j = j->next) {
 			if (i->data.id > j->data.id) {
-				// Ho�n ??i (Swap) c?u tr�c d? li?u b�n trong hai Node
+				// Hoán đổi (Swap) cấu trúc dữ liệu bên trong hai Node
 				Book temp = i->data;
 				i->data = j->data;
 				j->data = temp;
@@ -270,7 +167,7 @@ void Sort() {
 	cout << "Books sorted successfully by ID!" << endl;
 }
 
-// H�m T�m ki?m s�ch theo Id b?ng thu?t to�n T�m ki?m tu?n t? (Ch??ng 6)
+// Hàm Tìm kiếm sách theo Id bằng thuật toán Tìm kiếm tuần tự (Chương 6)
 void Find(int bookId) {
 	Node* temp = head;
 	bool found = false;
@@ -280,7 +177,7 @@ void Find(int bookId) {
 			cout << "Book Found: " << endl;
 			cout << temp->data;
 			found = true;
-			break; // T�m th?y th� d?ng v�ng l?p
+			break; // Tìm thấy thì dừng vòng lặp
 		}
 		temp = temp->next;
 	}
@@ -290,7 +187,7 @@ void Find(int bookId) {
 	}
 }
 
-// H�m gi?i ph�ng b? nh? c?a danh s�ch li�n k?t khi tho�t ch??ng tr�nh (Ch??ng 2 & 3)
+// Hàm giải phóng bộ nhớ của danh sách liên kết khi thoát chương trình (Chương 2 & 3)
 void FreeList() {
 	while (head != NULL) {
 		Node* temp = head;
@@ -317,7 +214,7 @@ int main()
 		switch (choose) {
 		case 1: {
 			Book b;
-			cin >> b; // G?i to�n t? n?p ch?ng >>
+			cin >> b; // Gọi toán tử nạp chồng >>
 			Addbook(b);
 			break;
 		}
@@ -343,7 +240,7 @@ int main()
 			break;
 		}
 		case 0: {
-			FreeList(); // Gi?i ph�ng b? nh? ??ng tr??c khi t?t ch??ng tr�nh
+			FreeList(); // Giải phóng bộ nhớ động trước khi tắt chương trình
 			cout << "Exiting program..." << endl;
 			return 0;
 		}
